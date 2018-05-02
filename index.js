@@ -69,30 +69,20 @@ const writeCourseData = (surveyyear) => {
   const research1 = ""
   const research2 = ""
   const research3 = ""
-  
-  // variables
-  let mobile
-  let gender  
-  let UMI1            
-  let UMI2 
-  let UMI3 
-  let UMI4 
-  let UMI5 
-  let UMI6
 
   for(let i = 0; i < numEvals; ++i) {
     let arr = []
 
-    mobile = randomIntFromInterval(0,1)                              // 0 or 1
-    gender = randomIntFromInterval(0,1) == 0 ? "Male" : "Female"     // male or female
+    let mobile = randomIntFromInterval(0,1)                              // 0 or 1
+    let gender = randomIntFromInterval(0,1) == 0 ? "Male" : "Female"     // male or female
 
     // random score from [1,5]
-    UMI1 = randomIntFromInterval(1,5)           
-    UMI2 = randomIntFromInterval(1,5)
-    UMI3 = randomIntFromInterval(1,5)
-    UMI4 = randomIntFromInterval(1,5)
-    UMI5 = randomIntFromInterval(1,5)
-    UMI6 = randomIntFromInterval(1,5)
+    let UMI1 = randomIntFromInterval(1,5)           
+    let UMI2 = randomIntFromInterval(1,5)
+    let UMI3 = randomIntFromInterval(1,5)
+    let UMI4 = randomIntFromInterval(1,5)
+    let UMI5 = randomIntFromInterval(1,5)
+    let UMI6 = randomIntFromInterval(1,5)
 
     arr = [surveyname, datestart, dateclose, crsnum, crsname, crsyear, deptname, 
       crs_dir, resp_fac, eval_id, eval_uname, eval_email, tsubmit, mobile, gradyear, gender,
@@ -111,7 +101,7 @@ function getRandomCourse() {
   const courses = [
     {
       crsnum: "LFS 100 001",
-      crsname: "Introduction to Land, Food and Community",
+      crsname: "Introduction to Land Food and Community",
       crsyear: "1",
       deptname: "LFS",
       crs_dir: "John Smith",
@@ -121,7 +111,7 @@ function getRandomCourse() {
     },
     {
       crsnum: "LFS 250 001",
-      crsname: "Land, Food and Community I",
+      crsname: "Land Food and Community I",
       crsyear: "2",
       deptname: "LFS",
       crs_dir: "Tony Stark",
@@ -178,6 +168,26 @@ function getRandomCourse() {
       resp_fac: "Anne Lo",
       eval_uname: "GOO8X0X9",
       eval_email: "anne.lo@ubc.ca"
+    },
+    {
+      crsnum: "GRS 290 001",
+      crsname: "Global Issues in Cultural Context",
+      crsyear: "2",
+      deptname: "GRS",
+      crs_dir: "Johnny Wang",
+      resp_fac: "Johnny Wang",
+      eval_uname: "PUMA28X0X9",
+      eval_email: "johnny.wang@ubc.ca"
+    },
+    {
+      crsnum: "GRS 290 104",
+      crsname: "Global Issues in Cultural Context",
+      crsyear: "2",
+      deptname: "GRS",
+      crs_dir: "Johnny Wang",
+      resp_fac: "Johnny Wang",
+      eval_uname: "TELZX0X9",
+      eval_email: "johnny.wang@ubc.ca"
     },
     {
       crsnum: "FNH 200 001",
