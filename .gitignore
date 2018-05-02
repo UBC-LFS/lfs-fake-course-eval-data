@@ -65,6 +65,8 @@ typings/
 .idea
 dist
 
+/output/output.csv
+
 /src/scripts/source
 /src/scripts/output
 
