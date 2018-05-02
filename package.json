@@ -1,0 +1,22 @@
+{
+  "name": "lfs-fake-course-eval-data",
+  "version": "1.0.0",
+  "description": "Script for generating dummy data for lfs-course-eval",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UBC-LFS/lfs-fake-course-eval-data.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UBC-LFS/lfs-fake-course-eval-data/issues"
+  },
+  "homepage": "https://github.com/UBC-LFS/lfs-fake-course-eval-data#readme",
+  "dependencies": {
+    "csv-parse": "^2.2.0"
+  }
+}
