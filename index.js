@@ -6,7 +6,7 @@ const assert = require('assert')
 const fsWriteFile = promisify(fs.writeFile)
 const fsReadFile = promisify(fs.readFile)
 
-const outputName = 'output.csv'
+const outputName = 'rawDataAll.csv'
 const stream = fs.createWriteStream(__dirname + '/output/' + outputName, { flags: 'a' })
 
 const writeHeader = async () => {
@@ -99,6 +99,146 @@ function randomIntFromInterval(min,max) {
 
 function getRandomCourse() {
   const courses = [
+    {
+      crsnum: "APBI 200 001",
+      crsname: "Introduction to Soil Science",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "David Smith",
+      resp_fac: "David Smith",
+      eval_uname: "NMXUE8X9BKL",
+      eval_email: "david.smith@ubc.ca"
+    },
+    {
+      crsnum: "APBI 210 001",
+      crsname: "Vascular Plants",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "David Smith",
+      resp_fac: "David Smith",
+      eval_uname: "RE9ZJNC8",
+      eval_email: "david.smith@ubc.ca"
+    },
+    {
+      crsnum: "APBI 222 001",
+      crsname: "Introduction to Horticulture",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "Jane Bo",
+      resp_fac: "Jane Bo",
+      eval_uname: "SOP38ZWO9",
+      eval_email: "jane.bo@ubc.ca"
+    },
+    {
+      crsnum: "APBI 244 001",
+      crsname: "Introduction to Biometeorlogy",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "Jane Bo",
+      resp_fac: "Jane Bo",
+      eval_uname: "SOP38ZWO9",
+      eval_email: "jane.bo@ubc.ca"
+    },
+    {
+      crsnum: "APBI 260 001",
+      crsname: "Agroecology I",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "Martha Kim",
+      resp_fac: "Martha Kim",
+      eval_uname: "X8V01MZZA",
+      eval_email: "martha.kim@ubc.ca"
+    },
+    {
+      crsnum: "APBI 265 001",
+      crsname: "Sustainable Agricultre and Food Systems",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "Wendy Liu",
+      resp_fac: "Wendy Liu",
+      eval_uname: "PIZZA00TIME",
+      eval_email: "wendy.liu@ubc.ca"
+    },
+    {
+      crsnum: "APBI 290 001",
+      crsname: "Introductory Topics in Applied Biology",
+      crsyear: "2",
+      deptname: "APBI",
+      crs_dir: "Chris Lee",
+      resp_fac: "Chris Lee",
+      eval_uname: "CUP1260CU10",
+      eval_email: "chris.lee@ubc.ca"
+    },
+    {
+      crsnum: "APBI 311 001",
+      crsname: "Comparative Cardiovascular Respiratory Osmoregulatory Physiology",
+      crsyear: "3",
+      deptname: "APBI",
+      crs_dir: "Chris Lee",
+      resp_fac: "Chris Lee",
+      eval_uname: "YOUT9JX13",
+      eval_email: "chris.lee@ubc.ca"
+    },
+    {
+      crsnum: "APBI 312 001",
+      crsname: "Reproductive and Digestive Physiology",
+      crsyear: "3",
+      deptname: "APBI",
+      crs_dir: "Alexander Lee",
+      resp_fac: "Alexander Lee",
+      eval_uname: "KZK2245K8ZMSIO",
+      eval_email: "alexander.lee@ubc.ca"
+    },
+    {
+      crsnum: "APBI 314 001",
+      crsname: "Animals and Society",
+      crsyear: "3",
+      deptname: "APBI",
+      crs_dir: "Alexander Lee",
+      resp_fac: "Alexander Lee",
+      eval_uname: "KZK2245K8ZMSIO",
+      eval_email: "alexander.lee@ubc.ca"
+    },
+    {
+      crsnum: "APBI 315 001",
+      crsname: "Animal Welfare and the Ethics of Animal Use",
+      crsyear: "3",
+      deptname: "APBI",
+      crs_dir: "Alexander Lee",
+      resp_fac: "Alexander Lee",
+      eval_uname: "KZK2245K8ZMSIO",
+      eval_email: "alexander.lee@ubc.ca"
+    },
+    {
+      crsnum: "APBI 318 001",
+      crsname: "Applied Plant Breeding",
+      crsyear: "3",
+      deptname: "APBI",
+      crs_dir: "Guy Seuss",
+      resp_fac: "Guy Seuss",
+      eval_uname: "5K8ZMSZK224IO",
+      eval_email: "guy.seuss@ubc.ca"
+    },
+    {
+      crsnum: "APBI 401 001",
+      crsname: "Soil Processes",
+      crsyear: "4",
+      deptname: "APBI",
+      crs_dir: "Drake Potter",
+      resp_fac: "Drake Potter",
+      eval_uname: "5K8ZMSZK224IO",
+      eval_email: "drake.potter@ubc.ca"
+    },
+    {
+      crsnum: "APBI 402 001",
+      crsname: "Sustainable Soil Management",
+      crsyear: "4",
+      deptname: "APBI",
+      crs_dir: "Harry Park",
+      resp_fac: "Harry Park",
+      eval_uname: "AZK224IK8ZMO",
+      eval_email: "harry.park@ubc.ca"
+    },
     {
       crsnum: "LFS 100 001",
       crsname: "Introduction to Land Food and Community",
