@@ -7,11 +7,7 @@ const fsWriteFile = promisify(fs.writeFile)
 const fsReadFile = promisify(fs.readFile)
 
 const outputName = 'rawDataAll.csv'
-<<<<<<< HEAD
 const stream = fs.createWriteStream(__dirname + '/' + outputName, { flags: 'a' })
-=======
-const stream = fs.createWriteStream(__dirname + '/output/' + outputName, { flags: 'a' })
->>>>>>> 830702e6bd617789cb1c4018523837ff6267781d
 
 const writeHeader = async () => {
   const header = [
