@@ -116,7 +116,7 @@ function getRandomCourse() {
       deptname: "APBI",
       crs_dir: "David Smith",
       resp_fac: "David Smith",
-      eval_uname: "RE9ZJNC8",
+      eval_uname: "NMXUE8X9BKL",
       eval_email: "david.smith@ubc.ca"
     },
     {
@@ -176,7 +176,7 @@ function getRandomCourse() {
       deptname: "APBI",
       crs_dir: "Chris Lee",
       resp_fac: "Chris Lee",
-      eval_uname: "YOUT9JX13",
+      eval_uname: "CUP1260CU10",
       eval_email: "chris.lee@ubc.ca"
     },
     {
@@ -226,7 +226,7 @@ function getRandomCourse() {
       deptname: "APBI",
       crs_dir: "Drake Potter",
       resp_fac: "Drake Potter",
-      eval_uname: "5K8ZMSZK224IO",
+      eval_uname: "ABC180ZUO",
       eval_email: "drake.potter@ubc.ca"
     },
     {
@@ -326,7 +326,7 @@ function getRandomCourse() {
       deptname: "GRS",
       crs_dir: "Johnny Wang",
       resp_fac: "Johnny Wang",
-      eval_uname: "TELZX0X9",
+      eval_uname: "PUMA28X0X9",
       eval_email: "johnny.wang@ubc.ca"
     },
     {
@@ -346,7 +346,7 @@ function getRandomCourse() {
       deptname: "FNH",
       crs_dir: "Timmy Anderson",
       resp_fac: "Timmy Anderson",
-      eval_uname: "KMMCOX1092F",
+      eval_uname: "DPQ91MZ62J",
       eval_email: "timmy.anderson@ubc.ca"
     }
   ]
