@@ -6,8 +6,8 @@ const assert = require('assert')
 const fsWriteFile = promisify(fs.writeFile)
 const fsReadFile = promisify(fs.readFile)
 
-const outputName = 'output.csv'
-const stream = fs.createWriteStream(__dirname + '/output/' + outputName, { flags: 'a' })
+const outputName = 'rawDataAll.csv'
+const stream = fs.createWriteStream(__dirname + '/' + outputName, { flags: 'a' })
 
 const writeHeader = async () => {
   const header = [
@@ -37,11 +37,11 @@ const writeHeader = async () => {
     'The instructor showed concern for student learning.',
     'Overall  the instructor was an effective teacher.'
   ]
-  await fsWriteFile(__dirname + '/output/' + outputName, header + '\r\n')
+  await fsWriteFile(__dirname + '/' + outputName, header + '\r\n')
 }
 
 const writeData = async (arr) => {
-  const file = await fsReadFile(__dirname + '/output/' + outputName)
+  const file = await fsReadFile(__dirname + '/' + outputName)
   parse(file, {}, (err, data) => {
     assert.equal(null, err)
     stream.write(arr + '\r\n')
@@ -217,6 +217,11 @@ function getRandomCourse() {
 
 const generateCSV = () => {
   writeHeader()
+  writeCourseData("2017W2")
+  writeCourseData("2017W2")
+  writeCourseData("2017W2")
+  writeCourseData("2017W2")
+  writeCourseData("2017W1")
   writeCourseData("2017W1")
   writeCourseData("2016W2")
   writeCourseData("2016W1")
@@ -224,6 +229,13 @@ const generateCSV = () => {
   writeCourseData("2015W2")
   writeCourseData("2015W1")
   writeCourseData("2015W1")
+  writeCourseData("2016W2")
+  writeCourseData("2016W1")
+  writeCourseData("2015W2")
+  writeCourseData("2015W2")
+  writeCourseData("2015W1")
+  writeCourseData("2015W1")
+  console.log('Dummy data has been successfully generated in ' + __dirname)
 }
 
 generateCSV()

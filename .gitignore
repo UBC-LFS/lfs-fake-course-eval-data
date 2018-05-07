@@ -65,7 +65,7 @@ typings/
 .idea
 dist
 
-/output/output.csv
+rawDataAll.csv
 
 /src/scripts/source
 /src/scripts/output
