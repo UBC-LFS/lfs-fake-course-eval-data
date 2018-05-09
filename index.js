@@ -6,50 +6,66 @@ const assert = require('assert')
 const fsWriteFile = promisify(fs.writeFile)
 const fsReadFile = promisify(fs.readFile)
 
-const outputName = 'rawDataAll.csv'
-const stream = fs.createWriteStream(__dirname + '/' + outputName, { flags: 'a' })
+const evaluationDataName = 'rawDataAll.csv'
+const evaluationDataStream = fs.createWriteStream(__dirname + '/' + evaluationDataName, { flags: 'a' })
+const evaluationHeader = [
+  'surveyname',
+  'datestart',
+  'dateclose',
+  'crsnum',
+  'crsname',
+  'crsyear',
+  'deptname',
+  'crs_dir',
+  'resp_fac',
+  'eval_id',
+  'eval_uname',
+  'eval_email',
+  'tsubmit',
+  'mobile',
+  'gradyear',
+  'gender',
+  'research1',
+  'research2',
+  'research3',
+  'The instructor made it clear what students were expected to learn.',
+  'The instructor communicated the subject matter effectively.',
+  'The instructor helped inspire interest in learning the subject matter.',
+  'Overall  evaluation of student learning (through exams  essays  presentations  etc.) was fair.',
+  'The instructor showed concern for student learning.',
+  'Overall  the instructor was an effective teacher.'
+]
 
-const writeHeader = async () => {
-  const header = [
-    'surveyname',
-    'datestart',
-    'dateclose',
-    'crsnum',
-    'crsname',
-    'crsyear',
-    'deptname',
-    'crs_dir',
-    'resp_fac',
-    'eval_id',
-    'eval_uname',
-    'eval_email',
-    'tsubmit',
-    'mobile',
-    'gradyear',
-    'gender',
-    'research1',
-    'research2',
-    'research3',
-    'The instructor made it clear what students were expected to learn.',
-    'The instructor communicated the subject matter effectively.',
-    'The instructor helped inspire interest in learning the subject matter.',
-    'Overall  evaluation of student learning (through exams  essays  presentations  etc.) was fair.',
-    'The instructor showed concern for student learning.',
-    'Overall  the instructor was an effective teacher.'
-  ]
-  await fsWriteFile(__dirname + '/' + outputName, header + '\r\n')
+const enrollmentDataName = 'course_eval_enrollments-2009-2017WA.csv'
+const enrollmentDataStream = fs.createWriteStream(__dirname + '/' + enrollmentDataName, { flags: 'a' })
+const enrollmentHeader = [
+  'crsnum','section','crsname','start_year','period','deptname','crstype','crsdesig','no_enrolled','active','resp_fac','blocks','sites','ct','xlist','crscode','crsstart','crsend','program'
+]
+
+const writeHeader = (header, fileName) => {
+  return async () => { await fsWriteFile(__dirname + '/' + fileName, header + '\r\n') }
 }
 
-const writeData = async (arr) => {
-  const file = await fsReadFile(__dirname + '/' + outputName)
-  parse(file, {}, (err, data) => {
-    assert.equal(null, err)
-    stream.write(arr + '\r\n')
-  })
+const writeEvaluationHeader = writeHeader(evaluationHeader, evaluationDataName)
+const writeEnrollmentHeader = writeHeader(enrollmentHeader, enrollmentDataName)
+
+const writeData = (fileName, fileDataStream) => {
+  return async (arr) => {
+    const file = await fsReadFile(__dirname + '/' + fileName)
+    parse(file, {}, (err, data) => {
+      assert.equal(null, err)
+      fileDataStream.write(arr + '\r\n')
+    })
+  }
 }
 
+const writeEvaluationData = writeData(evaluationDataName, evaluationDataStream)
+const writeEnrollmentData = writeData(enrollmentDataName, enrollmentDataStream)
+
+// write data for a single course 
 const writeCourseData = (surveyyear) => {
-  const numEvals = randomIntFromInterval(1,100) // number of evaluations
+  const numEnrolled = randomIntFromInterval(20,200)
+  const numEvals = Math.floor(Math.random() * numEnrolled) // number of evaluations
   const course = getRandomCourse()
 
   const surveyname = "LFS Instructor/Course Evaluation " + surveyyear
@@ -70,6 +86,15 @@ const writeCourseData = (surveyyear) => {
   const research2 = ""
   const research3 = ""
 
+  // write enrollment data for the course
+  const enrollmentArr = [
+    crsnum.slice(0,-4), parseInt(crsnum.slice(-3)), crsname,5,
+    surveyyear,crsnum.split(' ')[0],'Default','crsdesig',
+    numEnrolled,'Y',resp_fac,,,,,,,,'General'
+  ]
+  writeEnrollmentData(enrollmentArr)
+
+  // write evaluation data for the course
   for(let i = 0; i < numEvals; ++i) {
     let arr = []
 
@@ -88,7 +113,7 @@ const writeCourseData = (surveyyear) => {
       crs_dir, resp_fac, eval_id, eval_uname, eval_email, tsubmit, mobile, gradyear, gender,
       research1, research2, research3, UMI1, UMI2, UMI3, UMI4, UMI5, UMI6]
 
-    writeData(arr)
+    writeEvaluationData(arr)
   }
 }
 
@@ -356,7 +381,9 @@ function getRandomCourse() {
 }
 
 const generateCSV = () => {
-  writeHeader()
+  writeEvaluationHeader()
+  writeEnrollmentHeader()
+
   writeCourseData("2017W2")
   writeCourseData("2017W2")
   writeCourseData("2017W2")
