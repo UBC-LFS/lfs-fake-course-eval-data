@@ -103,11 +103,11 @@ const writeCourseData = (surveyyear) => {
 
     // random score from [1,5]
     let UMI1 = randomIntFromInterval(1,5)           
-    let UMI2 = randomIntFromInterval(1,5)
+    let UMI2 = randomIntFromSkewedInterval()
     let UMI3 = randomIntFromInterval(1,5)
     let UMI4 = randomIntFromInterval(1,5)
     let UMI5 = randomIntFromInterval(1,5)
-    let UMI6 = randomIntFromInterval(1,5)
+    let UMI6 = randomIntFromSkewedInterval()
 
     arr = [surveyname, datestart, dateclose, crsnum, crsname, crsyear, deptname, 
       crs_dir, resp_fac, eval_id, eval_uname, eval_email, tsubmit, mobile, gradyear, gender,
@@ -117,9 +117,32 @@ const writeCourseData = (surveyyear) => {
   }
 }
 
+// write course data for survey year n times
+const writeNCourseData = (surveyyear, n) => {
+  for(let i = 0; i < n; ++i) {
+    writeCourseData(surveyyear)
+  }
+}
+
 // returns a random integer from [min,max]
 function randomIntFromInterval(min,max) {
   return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+// returns an integer from 1-5 with different probability
+function randomIntFromSkewedInterval() {
+  const d = Math.random()
+  if (d < 0.15) { 
+    return 1;
+  } else if (d < 0.25) {
+    return 2;
+  } else if (d < 0.45) {
+    return 3;
+  } else if (d < 0.75) {
+    return 4;
+  } else {
+    return 5;
+  }
 }
 
 function getRandomCourse() {
@@ -380,28 +403,18 @@ function getRandomCourse() {
   return courses[index]
 }
 
+
+
 const generateCSV = () => {
   writeEvaluationHeader()
   writeEnrollmentHeader()
 
-  writeCourseData("2017W2")
-  writeCourseData("2017W2")
-  writeCourseData("2017W2")
-  writeCourseData("2017W2")
-  writeCourseData("2017W1")
-  writeCourseData("2017W1")
-  writeCourseData("2016W2")
-  writeCourseData("2016W1")
-  writeCourseData("2015W2")
-  writeCourseData("2015W2")
-  writeCourseData("2015W1")
-  writeCourseData("2015W1")
-  writeCourseData("2016W2")
-  writeCourseData("2016W1")
-  writeCourseData("2015W2")
-  writeCourseData("2015W2")
-  writeCourseData("2015W1")
-  writeCourseData("2015W1")
+  writeNCourseData("2017W2", 7)
+  writeNCourseData("2017W1", 5)
+
+  writeNCourseData("2016W2", 10)
+  writeNCourseData("2016W1", 3)
+  
   console.log('Dummy data has been successfully generated in ' + __dirname)
 }
 
